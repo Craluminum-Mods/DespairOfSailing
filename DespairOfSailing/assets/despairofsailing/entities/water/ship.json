@@ -1,0 +1,303 @@
+{
+    "code": "ship",
+    "class": "EntityBoat",
+    "variantgroups": [
+        { "code": "type", "states": ["sailed1"] },
+        { "code": "material", "states": ["aged"], "loadFromProperties": "block/wood" }
+    ],
+    "attributes": {
+        // deconstructible: true,
+        // deconstructDropsByType: {
+        // 	"boat-sailed1-*": [
+        // 		{ type: "item", code: "plank-{material}", quantity: 32 },
+        // 		{ type: "item", code: "plank-{material}", quantity: 32 },
+        // 		{ type: "item", code: "plank-{material}", quantity: 32 },
+        // 		{ type: "item", code: "plank-{material}", quantity: 32 },
+        // 		{ type: "item", code: "plank-{material}", quantity: 16 },
+        // 		{ type: "block", code: "supportbeam-{material}", quantity: 22 },
+        // 		{ type: "item", code: "rope", quantity: 13 },
+        // 		{ type: "block", code: "linen-normal-down", quantity: 15 }
+        // 	]
+        // },
+        "shouldSwivelFromMotion": false,
+        "swimmingOffsetYByType": {
+            "*-sailed1-*": 1
+        },
+        // "unfurlSailsByType": {
+        //     "*-sailed1-*": true
+        // },
+        "mountAnimationsByType": {
+            "*-sailed1-*": {
+                // "idle": "sitboatidle",
+                "idle": "",
+                "ready": "",
+                "forwards": "",
+                "backwards": ""
+            }
+        }
+    },
+    "hitboxSizeByType": {
+        "*-sailed1-*": { "x": 5, "y": 1.2, "z": 5 }
+    },
+    "behaviorConfigs": {
+        "ellipsoidalrepulseagents": {
+            "offset": { "x": 0.1, "z": 1.5 },
+            "__comment": "Not a 3d Ellipse but essentially a 2d ellipse lengthened in the y-axis",
+            "radius": { "x": 1.9, "y": 1.5, "z": 4.6 }
+        },
+        "passivephysicsmultibox": {
+            "collisionBoxesByType": {
+                "*-sailed1-*": [
+                    { "x1": -3.0, "y1": 0, "z1": 0.2, "x2": 3.0, "y2": 3, "z2": 5.8 },
+                    { "x1": -3.0, "y1": 0, "z1": -5.8, "x2": 3.0, "y2": 3, "z2": 0.2 },
+                    { "x1": -2.0, "y1": 0, "z1": -8.8, "x2": 2.0, "y2": 3, "z2": -5.8 }
+                ]
+            },
+            "groundDragFactor": 1,
+            "airDragFallingFactor": 0.5,
+            "gravityFactor": 1.0
+        },
+        "seatable": {
+            "seatsByType": {
+                "*-sailed1-*": [
+                    { "apName": "Seat1AP", "bodyYawLimit": null, "controllable": true },
+
+                    { "apName": "LFloor1AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor2AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor3AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor4AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor5AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor6AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor7AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor8AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor9AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor10AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "LFloor11AP", "bodyYawLimit": null, "controllable": false },
+
+                    { "apName": "CFloor1AP", "bodyYawLimit": null, "controllable": false },
+
+                    { "apName": "RFloor1AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor2AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor3AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor4AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor5AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor6AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor7AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor8AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor9AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor10AP", "bodyYawLimit": null, "controllable": false },
+                    { "apName": "RFloor11AP", "bodyYawLimit": null, "controllable": false }
+                ]
+            }
+        },
+        "rideableaccessories": {
+            "dropContentsOnDeath": true,
+            "__comment": "These need to be in the same order as the selectionBoxes array further down",
+            "wearableSlotsByType": {
+                "*-sailed1-*": [
+                    // { "code": "Seat1AP", "forCategoryCodes": [] },
+                    { "code": "Captain Seat", "forCategoryCodes": ["seat"], "attachmentPointCode": "Seat1AP", "stepParentTo": { "": { "elementName": "CaptainSeat" } } },
+                    { "code": "Ship Wheel", "forCategoryCodes": ["shipwheel"], "attachmentPointCode": "ShipWheelAP", "stepParentTo": { "": { "elementName": "ShipWheel" } } },
+
+                    { "code": "Left Prow Storage 1", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw1AP", "stepParentTo": { "": { "elementName": "LeftProwStorage1" } }, "canMergeWith": ["Left Storage 2"] },
+                    { "code": "Left Prow Storage 2", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw2AP", "stepParentTo": { "": { "elementName": "LeftProwStorage2" } } },
+                    { "code": "Left Prow Storage 3", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw3AP", "stepParentTo": { "": { "elementName": "LeftProwStorage3" } }, "canMergeWith": ["Left Storage 4"] },
+                    { "code": "Left Prow Storage 4", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw4AP", "stepParentTo": { "": { "elementName": "LeftProwStorage4" } } },
+                    { "code": "Left Prow Storage 5", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw5AP", "stepParentTo": { "": { "elementName": "LeftProwStorage5" } }, "canMergeWith": ["Left Storage 6"] },
+                    { "code": "Left Prow Storage 6", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw6AP", "stepParentTo": { "": { "elementName": "LeftProwStorage6" } } },
+                    { "code": "Left Prow Storage 7", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw7AP", "stepParentTo": { "": { "elementName": "LeftProwStorage7" } }, "canMergeWith": ["Left Storage 8"] },
+                    { "code": "Left Prow Storage 8", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw8AP", "stepParentTo": { "": { "elementName": "LeftProwStorage8" } } },
+                    { "code": "Left Prow Storage 9", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw9AP", "stepParentTo": { "": { "elementName": "LeftProwStorage9" } }, "canMergeWith": ["Left Storage 10"] },
+                    { "code": "Left Prow Storage 10", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw10AP", "stepParentTo": { "": { "elementName": "LeftProwStorage10" } } },
+                    { "code": "Left Prow Storage 11", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw11AP", "stepParentTo": { "": { "elementName": "LeftProwStorage11" } }, "canMergeWith": ["Left Storage 12"] },
+                    { "code": "Left Prow Storage 12", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "LProw12AP", "stepParentTo": { "": { "elementName": "LeftProwStorage12" } } },
+
+                    { "code": "Right Prow Storage 1", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw1AP", "stepParentTo": { "": { "elementName": "RightProwStorage1" } }, "canMergeWith": ["Right Storage 2"] },
+                    { "code": "Right Prow Storage 2", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw2AP", "stepParentTo": { "": { "elementName": "RightProwStorage2" } } },
+                    { "code": "Right Prow Storage 3", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw3AP", "stepParentTo": { "": { "elementName": "RightProwStorage3" } }, "canMergeWith": ["Right Storage 4"] },
+                    { "code": "Right Prow Storage 4", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw4AP", "stepParentTo": { "": { "elementName": "RightProwStorage4" } } },
+                    { "code": "Right Prow Storage 5", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw5AP", "stepParentTo": { "": { "elementName": "RightProwStorage5" } }, "canMergeWith": ["Right Storage 6"] },
+                    { "code": "Right Prow Storage 6", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw6AP", "stepParentTo": { "": { "elementName": "RightProwStorage6" } } },
+                    { "code": "Right Prow Storage 7", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw7AP", "stepParentTo": { "": { "elementName": "RightProwStorage7" } }, "canMergeWith": ["Right Storage 8"] },
+                    { "code": "Right Prow Storage 8", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw8AP", "stepParentTo": { "": { "elementName": "RightProwStorage8" } } },
+                    { "code": "Right Prow Storage 9", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw9AP", "stepParentTo": { "": { "elementName": "RightProwStorage9" } }, "canMergeWith": ["Right Storage 10"] },
+                    { "code": "Right Prow Storage 10", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw10AP", "stepParentTo": { "": { "elementName": "RightProwStorage10" } } },
+                    { "code": "Right Prow Storage 11", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw11AP", "stepParentTo": { "": { "elementName": "RightProwStorage11" } }, "canMergeWith": ["Right Storage 12"] },
+                    { "code": "Right Prow Storage 12", "forCategoryCodes": ["chest", "basket", "crate"], "attachmentPointCode": "RProw12AP", "stepParentTo": { "": { "elementName": "RightProwStorage12" } } },
+
+                    { "code": "Ceiling Prow Storage 1", "forCategoryCodes": ["lantern"], "attachmentPointCode": "Ceiling1AP", "stepParentTo": { "": { "elementName": "CeilingProwStorage1" } } },
+
+                    { "code": "Left Storage 1", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "LStore1AP", "stepParentTo": { "": { "elementName": "LeftStorage1" } } },
+                    { "code": "Left Storage 2", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "LStore2AP", "stepParentTo": { "": { "elementName": "LeftStorage2" } } },
+                    { "code": "Left Storage 3", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "LStore3AP", "stepParentTo": { "": { "elementName": "LeftStorage3" } } },
+                    { "code": "Left Storage 4", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "LStore4AP", "stepParentTo": { "": { "elementName": "LeftStorage4" } } },
+                    { "code": "Left Storage 5", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "LStore5AP", "stepParentTo": { "": { "elementName": "LeftStorage5" } } },
+
+                    { "code": "Right Storage 1", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "RStore1AP", "stepParentTo": { "": { "elementName": "RightStorage1" } } },
+                    { "code": "Right Storage 2", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "RStore2AP", "stepParentTo": { "": { "elementName": "RightStorage2" } } },
+                    { "code": "Right Storage 3", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "RStore3AP", "stepParentTo": { "": { "elementName": "RightStorage3" } } },
+                    { "code": "Right Storage 4", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "RStore4AP", "stepParentTo": { "": { "elementName": "RightStorage4" } } },
+                    { "code": "Right Storage 5", "forCategoryCodes": ["chest", "basket", "crate", "seat"], "attachmentPointCode": "RStore5AP", "stepParentTo": { "": { "elementName": "RightStorage5" } } },
+
+                    { "code": "LFloor1AP", "forCategoryCodes": [] },
+                    { "code": "LFloor2AP", "forCategoryCodes": [] },
+                    { "code": "LFloor3AP", "forCategoryCodes": [] },
+                    { "code": "LFloor4AP", "forCategoryCodes": [] },
+                    { "code": "LFloor5AP", "forCategoryCodes": [] },
+                    { "code": "LFloor6AP", "forCategoryCodes": [] },
+                    { "code": "LFloor7AP", "forCategoryCodes": [] },
+                    { "code": "LFloor8AP", "forCategoryCodes": [] },
+                    { "code": "LFloor9AP", "forCategoryCodes": [] },
+                    { "code": "LFloor10AP", "forCategoryCodes": [] },
+                    { "code": "LFloor11AP", "forCategoryCodes": [] },
+
+                    { "code": "CFloor1AP", "forCategoryCodes": [] },
+
+                    { "code": "RFloor1AP", "forCategoryCodes": [] },
+                    { "code": "RFloor2AP", "forCategoryCodes": [] },
+                    { "code": "RFloor3AP", "forCategoryCodes": [] },
+                    { "code": "RFloor4AP", "forCategoryCodes": [] },
+                    { "code": "RFloor5AP", "forCategoryCodes": [] },
+                    { "code": "RFloor6AP", "forCategoryCodes": [] },
+                    { "code": "RFloor7AP", "forCategoryCodes": [] },
+                    { "code": "RFloor8AP", "forCategoryCodes": [] },
+                    { "code": "RFloor9AP", "forCategoryCodes": [] },
+                    { "code": "RFloor10AP", "forCategoryCodes": [] },
+                    { "code": "RFloor11AP", "forCategoryCodes": [] }
+
+                    // { "code": "Upper Mast Storage", "forCategoryCodes": ["lantern"], "attachmentPointCode": "UpperMastAP", "stepParentTo": { "": { "elementName": "UpperMastStorage" } } },
+                    // { "code": "Figurehead", "forCategoryCodes": ["chiseledblock"], "attachmentPointCode": "FigureheadAP", "stepParentTo": { "": { "elementName": "FigureHeadStorage" } } },
+                    // { "code": "Left Ratlines", "forCategoryCodes": ["ratlines"], "attachmentPointCode": "RatlineLAP", "stepParentTo": { "": { "elementName": "RatlineL" } } },
+                    // { "code": "Right Ratlines", "forCategoryCodes": ["ratlines"], "attachmentPointCode": "RatlineRAP", "stepParentTo": { "": { "elementName": "RatlineR" } } },
+                    // { "code": "Lower Mast Storage", "forCategoryCodes": ["rope"], "attachmentPointCode": "LowerMastAP", "stepParentTo": { "": { "elementName": "LowerMastStorage" } } }
+                ]
+            }
+        },
+        "selectionboxes": {
+            "__comment": "Make sure the selectionBoxes are in the same order as the wearableSlots, or things can go haywire. Placed chest contents dont get synced properly for example, if wrongly ordered.",
+            "selectionBoxesByType": {
+                "*-sailed1-*": [
+                    "Seat1AP",
+                    "ShipWheelAP",
+
+                    "LProw1AP",
+                    "LProw2AP",
+                    "LProw3AP",
+                    "LProw4AP",
+                    "LProw5AP",
+                    "LProw6AP",
+                    "LProw7AP",
+                    "LProw8AP",
+                    "LProw9AP",
+                    "LProw10AP",
+                    "LProw11AP",
+                    "LProw12AP",
+
+                    "RProw1AP",
+                    "RProw2AP",
+                    "RProw3AP",
+                    "RProw4AP",
+                    "RProw5AP",
+                    "RProw6AP",
+                    "RProw7AP",
+                    "RProw8AP",
+                    "RProw9AP",
+                    "RProw10AP",
+                    "RProw11AP",
+                    "RProw12AP",
+
+                    "Ceiling1AP",
+
+                    "LStore1AP",
+                    "LStore2AP",
+                    "LStore3AP",
+                    "LStore4AP",
+                    "LStore5AP",
+
+                    "RStore1AP",
+                    "RStore2AP",
+                    "RStore3AP",
+                    "RStore4AP",
+                    "RStore5AP",
+
+                    "LFloor1AP",
+                    "LFloor2AP",
+                    "LFloor3AP",
+                    "LFloor4AP",
+                    "LFloor5AP",
+                    "LFloor6AP",
+                    "LFloor7AP",
+                    "LFloor8AP",
+                    "LFloor9AP",
+                    "LFloor10AP",
+                    "LFloor11AP",
+
+                    "CFloor1AP",
+
+                    "RFloor1AP",
+                    "RFloor2AP",
+                    "RFloor3AP",
+                    "RFloor4AP",
+                    "RFloor5AP",
+                    "RFloor6AP",
+                    "RFloor7AP",
+                    "RFloor8AP",
+                    "RFloor9AP",
+                    "RFloor10AP",
+                    "RFloor11AP"
+
+                    // "LStoreTall1AP",
+                    // "RStoreTall1AP",
+
+                    // "LStoreTool1AP",
+                    // "LStoreTool2AP",
+                    // "LStoreTool3AP",
+                    // "RStoreTool1AP",
+                    // "RStoreTool2AP",
+                    // "RStoreTool3AP",
+
+                    // "CStorageWall1",
+                ]
+            }
+        }
+    },
+    "client": {
+        "size": 1,
+        "renderer": "Shape",
+        "shape": { "base": "entity/water/ship/{type}", "ignoreElements": ["hideWater"] },
+        // "animations": [
+        //     { "code": "turnLeft", "animation": "turnLeft", "animationSpeed": 1, "easeInSpeed": 2, "easeOutSpeed": 2 },
+        //     { "code": "turnRight", "animation": "turnRight", "animationSpeed": 1, "easeInSpeed": 2, "easeOutSpeed": 2 }
+        // ],
+        "texturesByType": {
+            "*": {
+                "material": { "base": "game:block/wood/debarked/{material}" },
+                "oak": { "base": "game:block/wood/debarked/{material}" },
+                "oak1": { "base": "game:block/wood/planks/{material}*" },
+                "birch1": { "base": "game:block/wood/planks/{material}*" },
+                "plainoak": { "base": "game:block/wood/debarked/{material}" }
+            }
+        },
+        "behaviors": [
+            //
+            { "code": "ellipsoidalrepulseagents" },
+            { "code": "passivephysicsmultibox" },
+            { "code": "interpolateposition" },
+            { "code": "hidewatersurface", "hideWaterElement": "ORIGIN/hideWater/*" },
+            { "code": "selectionboxes" },
+            { "code": "rideableaccessories" },
+            { "code": "seatable" }
+        ]
+    },
+    "server": {
+        "behaviors": [
+            //
+            { "code": "ellipsoidalrepulseagents" },
+            { "code": "passivephysicsmultibox" },
+            { "code": "selectionboxes" },
+            { "code": "rideableaccessories" },
+            { "code": "seatable" }
+        ]
+    },
+    "sounds": {}
+}

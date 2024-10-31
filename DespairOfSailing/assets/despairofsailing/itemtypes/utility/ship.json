@@ -1,0 +1,55 @@
+{
+    "code": "ship",
+    "class": "ItemBoat",
+    "variantgroups": [
+        { "code": "type", "states": ["sailed1"] },
+        { "code": "material", "states": ["aged"], "loadFromProperties": "block/wood" }
+    ],
+    "skipVariants": ["*-sailed1-aged"],
+    "shapeByType": {
+        "*-sailed1-*": { "base": "entity/water/ship/{type}", "ignoreElements": ["hideWater"] }
+    },
+    "texturesByType": {
+        "*": {
+            "material": { "base": "game:block/wood/debarked/{material}" },
+            "oak": { "base": "game:block/wood/debarked/{material}" },
+            "oak1": { "base": "game:block/wood/planks/{material}*" },
+            "birch1": { "base": "game:block/wood/planks/{material}*" },
+            "plainoak": { "base": "game:block/wood/debarked/{material}" }
+        }
+    },
+    "heldTpIdleAnimation": "holdunderarm",
+    "maxstacksize": 1,
+    "materialDensity": 1,
+    "liquidSelectable": 1,
+    "creativeinventory": {
+        "general": ["*"],
+        "items": ["*"],
+        "tools": ["*"],
+        "despairofsailing": ["*"]
+    },
+    "guiTransform": {
+        "translation": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": -32, "y": -45, "z": -180 },
+        "origin": { "x": 2.5, "y": 2, "z": 1 },
+        "scale": 0.125
+    },
+    "fpHandTransform": {
+        "translation": { "x": 0, "y": 0.4, "z": 0.46 },
+        "rotation": { "x": 9, "y": -8, "z": 88 },
+        "origin": { "x": 0.5, "y": 0, "z": 0.5 },
+        "scale": 0.3
+    },
+    "groundTransform": {
+        "translation": { "x": 0.0, "y": 0.0, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "origin": { "x": 0, "y": 0, "z": 0 },
+        "scale": 1
+    },
+    "tpHandTransform": {
+        "translation": { "x": -0.78, "y": 0.48, "z": -0.85 },
+        "rotation": { "x": 98, "y": -145, "z": 19 },
+        "origin": { "x": 0.5, "y": 0, "z": 0.5 },
+        "scale": 0.3
+    }
+}
